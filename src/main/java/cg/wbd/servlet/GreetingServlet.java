@@ -9,6 +9,13 @@ import java.io.IOException;
 public class GreetingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getOutputStream().println("Hello world!");
+        StringBuilder stringBuilder = new StringBuilder()
+                .append("<form>")
+                .append("    <label>")
+                .append("        <input type=\"text\" name=\"name\">")
+                .append("    </label>")
+                .append("    <input type=\"submit\" value=\"Submit\">")
+                .append("</form>");
+        resp.getOutputStream().println(stringBuilder.toString());
     }
 }
