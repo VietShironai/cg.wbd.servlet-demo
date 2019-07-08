@@ -19,4 +19,14 @@ public class GreetingServlet extends HttpServlet {
         resp.setContentType("text/html");
         resp.getOutputStream().println(stringBuilder.toString());
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String nameParam = req.getParameter("name");
+        if (nameParam == null || nameParam.isEmpty()) {
+            resp.getOutputStream().println("Hello world!");
+        } else {
+            resp.getOutputStream().println("Hello " + nameParam + "!");
+        }
+    }
 }
