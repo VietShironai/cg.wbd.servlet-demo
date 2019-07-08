@@ -16,6 +16,12 @@ public class GreetingServlet extends HttpServlet {
                 .append("    </label>")
                 .append("    <input type=\"submit\" value=\"Submit\">")
                 .append("</form>");
+        String nameParam = req.getParameter("name");
+        if (nameParam == null || nameParam.isEmpty()) {
+            stringBuilder.append("Hello world!");
+        } else {
+            stringBuilder.append("Hello ").append(nameParam).append("!");
+        }
         resp.setContentType("text/html");
         resp.getOutputStream().println(stringBuilder.toString());
     }
