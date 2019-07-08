@@ -1,1 +1,1 @@
-Hello, <%=request.getParameter("name")%>
+Hello, <%= request.getAttribute("name")%>

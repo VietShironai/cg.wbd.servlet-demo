@@ -19,6 +19,8 @@ public class GreetingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/greeting.jsp");
+        String name = req.getParameter("name");
+        req.setAttribute("name", name);
         dispatcher.forward(req, resp);
     }
 }
