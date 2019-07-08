@@ -28,5 +28,8 @@ public class GreetingServlet extends HttpServlet {
         } else {
             resp.getOutputStream().println("Hello " + nameParam + "!");
         }
+        resp.getOutputStream().println("<br/>");
+        resp.getOutputStream().println("<a href=\"/greeting\">Back</a>");
+        resp.setContentType("text/html");
     }
 }
