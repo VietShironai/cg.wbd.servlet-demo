@@ -16,6 +16,7 @@ public class GreetingServlet extends HttpServlet {
                 .append("    </label>")
                 .append("    <input type=\"submit\" value=\"Submit\">")
                 .append("</form>");
+        resp.setContentType("text/html");
         resp.getOutputStream().println(stringBuilder.toString());
     }
 }
