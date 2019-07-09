@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class CustomerController extends HttpServlet {
     private static final String EDIT = "edit";
+    private static final String NO_ACTION = "";
 
     private CustomerService customerService = new CustomerService();
 
@@ -21,7 +22,7 @@ public class CustomerController extends HttpServlet {
             case EDIT:
                 showDetails(req, resp);
                 break;
-            default:
+            case NO_ACTION:
                 showList(req, resp);
         }
     }
@@ -34,7 +35,7 @@ public class CustomerController extends HttpServlet {
 
     private String getAction(HttpServletRequest req) {
         String action = req.getParameter("action");
-        return action == null ? "" : action.toLowerCase();
+        return action == null ? NO_ACTION : action.toLowerCase();
     }
 
     private Customer parseCustomer(HttpServletRequest req) {
