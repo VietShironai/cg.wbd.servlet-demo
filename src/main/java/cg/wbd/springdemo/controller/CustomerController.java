@@ -10,15 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class CustomerController extends HttpServlet {
+    private static final String EDIT = "edit";
+
     private CustomerService customerService = new CustomerService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if (action == null || action.isEmpty()) {
-            showList(req, resp);
-        } else {
-            showDetails(req, resp);
+        switch (action.toLowerCase()) {
+            case EDIT:
+                showDetails(req, resp);
+                break;
+            default:
+                showList(req, resp);
         }
     }
 
