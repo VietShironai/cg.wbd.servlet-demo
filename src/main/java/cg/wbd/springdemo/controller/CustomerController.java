@@ -17,10 +17,10 @@ public class CustomerController extends HttpServlet {
         String action = req.getParameter("action");
         if (action == null || action.isEmpty()) {
             req.setAttribute("customers", customerService.findAll());
-            RequestDispatcher dispatcher = req.getRequestDispatcher("customers.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/list.jsp");
             dispatcher.forward(req, resp);
         } else {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("customer-details.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/details.jsp");
             dispatcher.forward(req, resp);
         }
     }
