@@ -16,8 +16,7 @@ public class CustomerController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        switch (action.toLowerCase()) {
+        switch (getAction(req)) {
             case EDIT:
                 showDetails(req, resp);
                 break;
@@ -25,6 +24,17 @@ public class CustomerController extends HttpServlet {
                 showList(req, resp);
         }
     }
+
+    private String getAction(HttpServletRequest req) {
+        String action = req.getParameter("action");
+        if (action != null) {
+            action = action.toLowerCase();
+        } else {
+            action = "";
+        }
+        return action;
+    }
+
 
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("customers", customerService.findAll());
