@@ -42,7 +42,7 @@ There are <%= customers.size() %> customers in list.
             <%=c.getAddress()%>
         </td>
         <td>
-            <a href="#">Edit</a>
+            <a href="<%= "/customers?action=edit&id=" + c.getId() %>">Edit</a>
         </td>
     </tr>
     <%}%>
