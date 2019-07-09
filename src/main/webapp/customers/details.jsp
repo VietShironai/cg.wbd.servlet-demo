@@ -8,7 +8,7 @@
     <title>Customer Details</title>
 </head>
 <body>
-<form>
+<form action="/customers" method="post">
     <fieldset>
         <legend>Customer Details</legend>
         <table>
