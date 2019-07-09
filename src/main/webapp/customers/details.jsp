@@ -4,6 +4,6 @@
     <title>Customer Details</title>
 </head>
 <body>
-
+<%= request.getAttribute("customer") %>
 </body>
 </html>
