@@ -34,12 +34,7 @@ public class CustomerController extends HttpServlet {
 
     private String getAction(HttpServletRequest req) {
         String action = req.getParameter("action");
-        if (action != null) {
-            action = action.toLowerCase();
-        } else {
-            action = "";
-        }
-        return action;
+        return action == null ? "" : action.toLowerCase();
     }
 
     private Customer parseCustomer(HttpServletRequest req) {
