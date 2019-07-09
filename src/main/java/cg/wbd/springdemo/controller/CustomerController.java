@@ -28,16 +28,7 @@ public class CustomerController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long id = Long.valueOf(req.getParameter("id"));
-        String name = req.getParameter("name");
-        String email = req.getParameter("email");
-        String address = req.getParameter("address");
-
-        Customer customer = new Customer(name, email, address);
-        customer.setId(id);
-
-        customerService.save(customer);
-
+        customerService.save(parseCustomer(req));
         RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/update-success.jsp");
         dispatcher.forward(req, resp);
     }
@@ -52,6 +43,17 @@ public class CustomerController extends HttpServlet {
         return action;
     }
 
+    private Customer parseCustomer(HttpServletRequest req) {
+        Long id = Long.valueOf(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String address = req.getParameter("address");
+
+        Customer customer = new Customer(name, email, address);
+        customer.setId(id);
+
+        return customer;
+    }
 
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("customers", customerService.findAll());
