@@ -1,6 +1,4 @@
-<%@ page import="cg.wbd.springdemo.model.Customer" %>
 <%@ page import="java.util.List" %>
-<%@ page import="cg.wbd.springdemo.service.CustomerService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,9 +6,8 @@
 </head>
 <body>
 <%
-    CustomerService customerService = new CustomerService();
-    List<Customer> customers = customerService.findAll();
+    List customers = (List) request.getAttribute("customers");
 %>
-There are <%= customers.size()%> customers in list.
+There are <%= customers.size() %> customers in list.
 </body>
 </html>
