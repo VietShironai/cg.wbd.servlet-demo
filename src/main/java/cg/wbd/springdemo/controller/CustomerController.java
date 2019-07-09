@@ -29,8 +29,7 @@ public class CustomerController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         customerService.save(parseCustomer(req));
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/update-success.jsp");
-        dispatcher.forward(req, resp);
+        showUpdateSuccess(req, resp);
     }
 
     private String getAction(HttpServletRequest req) {
@@ -67,4 +66,10 @@ public class CustomerController extends HttpServlet {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/details.jsp");
         dispatcher.forward(req, resp);
     }
+
+    private void showUpdateSuccess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/update-success.jsp");
+        dispatcher.forward(req, resp);
+    }
+
 }
