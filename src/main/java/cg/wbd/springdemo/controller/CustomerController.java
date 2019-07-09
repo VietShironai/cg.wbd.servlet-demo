@@ -27,7 +27,8 @@ public class CustomerController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/update-success.jsp");
+        dispatcher.forward(req, resp);
     }
 
     private String getAction(HttpServletRequest req) {
