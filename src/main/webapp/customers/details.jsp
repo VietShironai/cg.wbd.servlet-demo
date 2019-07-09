@@ -11,6 +11,7 @@
 <form action="/customers" method="post">
     <fieldset>
         <legend>Customer Details</legend>
+        <input type="hidden" name="id" value="<%= customer.getId() %>">
         <table>
             <tr>
                 <td><label for="name">Name:</label></td>
