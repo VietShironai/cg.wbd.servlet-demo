@@ -25,6 +25,11 @@ public class CustomerController extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
+
     private String getAction(HttpServletRequest req) {
         String action = req.getParameter("action");
         if (action != null) {
