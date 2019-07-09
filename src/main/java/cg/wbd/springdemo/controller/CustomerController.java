@@ -1,5 +1,6 @@
 package cg.wbd.springdemo.controller;
 
+import cg.wbd.springdemo.model.Customer;
 import cg.wbd.springdemo.service.CustomerService;
 
 import javax.servlet.RequestDispatcher;
@@ -27,6 +28,16 @@ public class CustomerController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Long id = Long.valueOf(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String address = req.getParameter("address");
+
+        Customer customer = new Customer(name, email, address);
+        customer.setId(id);
+
+        customerService.save(customer);
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/update-success.jsp");
         dispatcher.forward(req, resp);
     }
