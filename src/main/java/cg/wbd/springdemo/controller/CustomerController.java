@@ -16,12 +16,20 @@ public class CustomerController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if (action == null || action.isEmpty()) {
-            req.setAttribute("customers", customerService.findAll());
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/list.jsp");
-            dispatcher.forward(req, resp);
+            showList(req, resp);
         } else {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/details.jsp");
-            dispatcher.forward(req, resp);
+            showDetails(req, resp);
         }
+    }
+
+    private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("customers", customerService.findAll());
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/list.jsp");
+        dispatcher.forward(req, resp);
+    }
+
+    private void showDetails(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/customers/details.jsp");
+        dispatcher.forward(req, resp);
     }
 }
