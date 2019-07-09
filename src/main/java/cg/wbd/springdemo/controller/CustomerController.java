@@ -19,6 +19,9 @@ public class CustomerController extends HttpServlet {
             req.setAttribute("customers", customerService.findAll());
             RequestDispatcher dispatcher = req.getRequestDispatcher("customers.jsp");
             dispatcher.forward(req, resp);
+        } else {
+            RequestDispatcher dispatcher = req.getRequestDispatcher("customer-details.jsp");
+            dispatcher.forward(req, resp);
         }
     }
 }
